@@ -4,50 +4,78 @@ using System.Collections.Generic;
 
 namespace Task_4_1
 {
-    public class User
+   class TestCase
     {
-        public string FirstName { get; set; }
-        public string SecondName { get; set; }
-        public override bool Equals(object obj)
-        {
-            var user = obj as User;
-            if (user == null)
-                return false;
-
-            return FirstName == user.FirstName && SecondName == user.SecondName;
-        }
-        public override int GetHashCode()
-        {
-            int firtsNameHashCode = FirstName?.GetHashCode() ?? 0;
-            int secondNameHashCode = SecondName?.GetHashCode() ?? 0;
-            return firtsNameHashCode ^ secondNameHashCode;
-        }
-
-
+       public int Count;
     }
+
+
+  
 
     class Program
     {
+      
+        public static string[] FillArray()
+        {
+            string str = "stroka";
+            string[] a = new string[10000];
+            for (int i = 0; i < 10000; i++)
+            {
+                a[i] = str + i;
+            }
+            return a;
+        }
+        public static HashSet<string> FillHash()
+        {
+            string str = "stroka";
+           var hashSet = new HashSet<string>();
+            for (int i = 0; i < 10000; i++)
+            {
+                hashSet.Add(str + i);
+            }
+            return hashSet;
+        }
+        public static void SearchArray(string[]a,string search)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] == search)
+                {
+                    Console.WriteLine($"Найдена строка {search}");
+                }
+
+            }
+
+        }
+        public static void SearchHash(HashSet<string> hashSet,string search)
+        {
+            if (hashSet.Contains(search))
+            {
+                Console.WriteLine($"Найдена строка {search}");
+            }
+            
+
+        }
+        public static void TestFill(TestCase testCase)
+        {
+            if (testCase.Count == FillArray().Length&&testCase.Count==FillHash().Count)
+            {
+                Console.WriteLine("VALID TEST");
+            }
+            else
+            {
+                Console.WriteLine("INVALID TEST");
+            }
+
+        }
         
+       
 
         static void Main(string[] args)
         {
-            //string[] a=new string[10000];
-            //for (int i = 0; i < 10000; i++)
-            //{
-            //    a[i] = "stroka";
-            //}
-            //a[6] = "gb";
-            //Console.WriteLine($"{a[5]},{a[9999]},{a[6]}");
-            var hashSet = new HashSet<User>();
+            TestCase testCase = new TestCase { Count = 10000 };
+            TestFill(testCase);
 
-            var user = new User() { FirstName = "Barbara", SecondName = "Santa" };
-
-            hashSet.Add(user);
-
-            var searchUsser = new User() { FirstName = "Barbara", SecondName = "Santa" };
-
-            Console.WriteLine($"contains user {hashSet.Contains(user)}, contains searchUsser {hashSet.Contains(searchUsser)}");
 
         }
     }
