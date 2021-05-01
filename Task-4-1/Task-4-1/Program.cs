@@ -10,15 +10,13 @@ namespace Task_4_1
    class TestCase
     {
        public int Count;
-       //public string[] arr;
-       //public HashSet<string> hash;
-       //public  string str = "stroka5999";
+       
     }
     public  class ArrHash
     {
         public  string[] arr { get; set; }
         public  HashSet<string> hash { get; set; }
-        public  string str = "stroka5999";
+        public  string str = "stroka9999";
 
         
         public  string[] FillArray()
@@ -66,17 +64,14 @@ namespace Task_4_1
         [Benchmark]
         public  void TestArBench()
         {
-            arr = FillArray();
-           
-            SearchArray(arr,str);
+            SearchArray(FillArray(), str);
 
         }
         [Benchmark]
         public  void TestHashBench()
         {
-            hash = FillHash();
             
-            SearchHash(hash,str);
+            SearchHash(FillHash(), str);
 
         }
 
@@ -87,32 +82,28 @@ namespace Task_4_1
 
     class Program
     {
-      
-        //public void TestFill(TestCase testCase)
-        //{
-        //    if (testCase.Count == FillArray().Length&&testCase.Count==FillHash().Count)
-        //    {
-        //        Console.WriteLine("VALID TEST");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("INVALID TEST");
-        //    }
 
-        //}
-        
+        public static void TestFill(TestCase testCase)
+        {
+            ArrHash arrHash = new ArrHash();
+            if (testCase.Count == arrHash.FillArray().Length && testCase.Count == arrHash.FillHash().Count)
+            {
+                Console.WriteLine("VALID TEST");
+            }
+            else
+            {
+                Console.WriteLine("INVALID TEST");
+            }
+
+        }
+
         static void Main(string[] args)
         {
+            TestCase testCase = new TestCase { Count = 10000 };
+            TestFill(testCase);
+
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
            
-
-            //arrHash.arr = arrHash.FillArray();
-            //arrHash.hash = arrHash.FillHash();
-
-           // Console.ReadKey();
-            
-            
-
         }
     }
 }
