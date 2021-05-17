@@ -2,6 +2,10 @@
 
 namespace Task_4_2
 {
+    public class TestCase
+    {
+
+    }
 
     public interface ITree
     {
