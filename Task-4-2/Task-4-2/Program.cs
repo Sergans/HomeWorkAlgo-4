@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task_4_2
 {
     public class TestCase
     {
+        public int []testtree { get; set; }
+        public int counttree { get; set; }
+        public TreeNode Node { get; set; }
+
 
     }
 
@@ -18,13 +23,37 @@ namespace Task_4_2
 
     class Program
     {
-        static void Main(string[] args)
+        public static void CountTree(TreeNode root)
+        {
+
+        }
+        public static TreeNode TestTree(TestCase testcase)
         {
             TreeNode tree = new TreeNode();
-            tree.AddItem(8);
-            tree.AddItem(1);
-            tree.AddItem(9);
-            tree.PrintTree();
+            for (int i = 0; i < testcase.testtree.Length; i++)
+            {
+                tree.AddItem(testcase.testtree[i]);
+
+            }
+
+
+            return tree.Root;
+
+
+        }
+        static void Main(string[] args)
+        {
+            TreeNode node = new TreeNode();
+            TestCase testCase = new TestCase();
+            testCase.testtree = new[] { 8, 4, 9, 8, 5, 3, 10 };
+            node.Root=TestTree(testCase);
+            node.PrintTree();
+
+            
+            
+            
+           
+            
            
         }
     }
