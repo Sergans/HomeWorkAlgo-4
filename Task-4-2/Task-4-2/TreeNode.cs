@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task_4_2
 {
-    class TreeNode : ITree
+   public class TreeNode : ITree
     {
         public int Value { get; set; }
         public TreeNode RightChild { get; set; }
@@ -98,7 +98,7 @@ namespace Task_4_2
 
         public void PrintTree()
         {
-            throw new NotImplementedException();
+            TreeHelper.Print(GetRoot());
         }
 
         public void RemoveItem(int value)

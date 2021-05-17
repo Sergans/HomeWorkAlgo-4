@@ -12,35 +12,15 @@ namespace Task_4_2
         void PrintTree(); //вывести дерево в консоль
     }
 
-    //public class TreeNode
-    //{
-    //    public int Value { get; set; }
-    //    public TreeNode LeftChild { get; set; }
-    //    public TreeNode RightChild { get; set; }
-    //    public override bool Equals(object obj)
-    //    {
-    //        var node = obj as TreeNode;
-
-    //        if (node == null)
-    //            return false;
-
-    //        return node.Value == Value;
-
-    //    }
-    //}
-
-    public class NodeInfo
-    {
-        public int Depth { get; set; }
-        public TreeNode Node { get; set; }
-
-    }
-
-
     class Program
     {
         static void Main(string[] args)
         {
+            TreeNode tree = new TreeNode();
+            tree.AddItem(8);
+            tree.AddItem(1);
+            tree.AddItem(9);
+            tree.PrintTree();
            
         }
     }
