@@ -6,10 +6,19 @@ namespace Task_4_2
     public class TestCase
     {
         public int []testtree { get; set; }
-        public int counttree { get; set; }
+        public int counttree = 0;
         public TreeNode Node { get; set; }
+        public  int CountTree(TreeNode root)
+        {
+            if (root != null)
+            {
+                counttree++;
+                CountTree(root.LefttChild);
 
-
+                CountTree(root.RightChild);
+            }
+            return counttree;
+         }  
     }
 
     public interface ITree
@@ -23,11 +32,9 @@ namespace Task_4_2
 
     class Program
     {
-        public static void CountTree(TreeNode root)
-        {
-
-        }
-        public static TreeNode TestTree(TestCase testcase)
+      
+        
+        public static TreeNode NewTree(TestCase testcase)
         {
             TreeNode tree = new TreeNode();
             for (int i = 0; i < testcase.testtree.Length; i++)
@@ -41,12 +48,22 @@ namespace Task_4_2
 
 
         }
+        public static void TestTree(TreeNode node,TestCase testCase)
+        {
+            if (testCase.testtree.Length == testCase.CountTree(node))
+            {
+                Console.WriteLine("VALID TEST");
+            }
+
+        }
         static void Main(string[] args)
         {
             TreeNode node = new TreeNode();
             TestCase testCase = new TestCase();
             testCase.testtree = new[] { 8, 4, 9, 8, 5, 3, 10 };
-            node.Root=TestTree(testCase);
+            node.Root=NewTree(testCase);
+            TestTree(node.Root, testCase);
+            Console.WriteLine(testCase.counttree);
             node.PrintTree();
 
             
