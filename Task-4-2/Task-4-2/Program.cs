@@ -93,8 +93,11 @@ namespace Task_4_2
             node.Root=NewTree(testCase);
            
             TestTree(node, testCase);
-            //Console.WriteLine(testCase.counttree);
-            //node.PrintTree();
+            
+            node.PrintTree();
+            node.RemoveItem(5);
+            node.PrintTree();
+            TestTree(node, testCase);
 
 
 
