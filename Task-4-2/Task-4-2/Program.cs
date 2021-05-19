@@ -50,9 +50,38 @@ namespace Task_4_2
         }
         public static void TestTree(TreeNode node,TestCase testCase)
         {
-            if (testCase.testtree.Length == testCase.CountTree(node))
+            bool y = true;
+            bool n = true;
+
+            if (testCase.testtree.Length == testCase.CountTree(node.Root))
             {
                 Console.WriteLine("VALID TEST");
+            }
+            else
+            {
+                Console.WriteLine("INVALID TEST");
+            }
+            for (int i = 0; i < testCase.testtree.Length; i++)
+            {
+                if (testCase.testtree[i] == node.GetNodeByValue(testCase.testtree[i]).Value)
+                {
+                    y = true;
+                   
+                }
+                else if(testCase.testtree[i] == node.GetNodeByValue(testCase.testtree[i]).Value)
+                {
+                    n = false;
+                }
+                
+
+            }
+            if (y == n)
+            {
+                Console.WriteLine("VALID TEST");
+            }
+            else
+            {
+                Console.WriteLine("INVALID TEST");
             }
 
         }
@@ -62,16 +91,17 @@ namespace Task_4_2
             TestCase testCase = new TestCase();
             testCase.testtree = new[] { 8, 4, 9, 8, 5, 3, 10 };
             node.Root=NewTree(testCase);
-            TestTree(node.Root, testCase);
-            Console.WriteLine(testCase.counttree);
-            node.PrintTree();
+           
+            TestTree(node, testCase);
+            //Console.WriteLine(testCase.counttree);
+            //node.PrintTree();
 
-            
-            
-            
-           
-            
-           
+
+
+
+
+
+
         }
     }
 }
