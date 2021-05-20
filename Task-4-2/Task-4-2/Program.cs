@@ -52,6 +52,7 @@ namespace Task_4_2
         {
             bool y = true;
             bool n = true;
+            testCase.counttree = 0;
 
             if (testCase.testtree.Length == testCase.CountTree(node.Root))
             {
@@ -63,7 +64,15 @@ namespace Task_4_2
             }
             for (int i = 0; i < testCase.testtree.Length; i++)
             {
-                if (testCase.testtree[i] == node.GetNodeByValue(testCase.testtree[i]).Value)
+                if (node.GetNodeByValue(testCase.testtree[i]) == null)
+                {
+                    n = false;
+                    
+
+                }
+
+
+                else if (testCase.testtree[i] == node.GetNodeByValue(testCase.testtree[i]).Value)
                 {
                     y = true;
                    
@@ -72,7 +81,7 @@ namespace Task_4_2
                 {
                     n = false;
                 }
-                
+               
 
             }
             if (y == n)
@@ -91,19 +100,17 @@ namespace Task_4_2
             TestCase testCase = new TestCase();
             testCase.testtree = new[] { 8, 4, 9, 8, 5, 3, 10 };
             node.Root=NewTree(testCase);
-           
+                
             TestTree(node, testCase);
             
             node.PrintTree();
             node.RemoveItem(5);
+           node.PrintTree();
+            TestTree(node, testCase);
+            
+            node.AddItem(5);
             node.PrintTree();
             TestTree(node, testCase);
-
-
-
-
-
-
 
         }
     }

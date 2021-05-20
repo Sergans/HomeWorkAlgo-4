@@ -81,13 +81,17 @@ namespace Task_4_2
                     tmp = searchnode;
                     searchnode = searchnode.RightChild;
                 }
-                else
+                else if (current == 0)
                 {
 
                     return searchnode;
                     break;
                 }
+                
+                
+                    
             }
+            
             return searchnode;
         }
 
