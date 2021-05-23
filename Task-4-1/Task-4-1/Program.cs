@@ -18,7 +18,11 @@ namespace Task_4_1
         public  HashSet<string> hash { get; set; }
         public  string str = "stroka9999";
 
-        
+        public ArrHash()
+        {
+            arr = FillArray();
+            hash = FillHash();
+        }
         public  string[] FillArray()
         {
             string str = "stroka";
@@ -64,14 +68,14 @@ namespace Task_4_1
         [Benchmark]
         public  void TestArBench()
         {
-            SearchArray(FillArray(), str);
+            SearchArray(arr, str);
 
         }
         [Benchmark]
         public  void TestHashBench()
         {
             
-            SearchHash(FillHash(), str);
+            SearchHash(hash, str);
 
         }
 
